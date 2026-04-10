@@ -1,0 +1,36 @@
+/**
+* CHIP-8 CPU
+*/
+module cpu(
+	input wire clk_2MHz,//Clock de 6 MHz à diviser pour avoir 60 Hz
+	input wire clockHDMI,
+	input reset,
+	input chip8_ready, // if 1 => CHIP-8 Ready
+	
+	output reg [5:0] draw_x,
+	output reg [4:0] draw_y,
+	output reg [2:0] draw_color,
+	output reg draw_clear,
+	output reg draw_wren,
+	input drawQ_full,
+	input drawQ_empty,
+	
+	input [15:0] gamepad_key,
+	output reg led2,
+	
+	input mem_wren,
+	input [7:0] mem_wdata,
+	input [11:0] mem_waddr,
+	
+	output reg videoRam_req,
+	output reg [5:0] videoRam_x,
+	output reg [4:0] videoRam_y,
+	input videoRam_sync,
+	input [2:0] videoRam_pixel,
+	
+	input [11:0] opcode_counter_debug,
+	
+	output sound_on
+);
+
+endmodule

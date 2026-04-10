@@ -1,0 +1,120 @@
+/*
+ * This modules returns the value of the pixel to be displayied
+ * at coordinate (x, y) allowing to select when get as source
+ * the text or the raster buffer.
+ *
+ * RASTER MODE
+ * -----------
+ *
+ * We use a Dual RAM of 640x480*3 = 921600 bits = 115200 bytes; this
+ * will contain the raw RGB values to display.
+ *
+ *
+ * TEXT MODE
+ * ---------
+ *
+ * We want to write some text using glyph stored into some ROM.
+ *
+ * Each glyph is a matrix of 8x16 pixels, we want to cover at least the
+ * first 127 ASCII character, so we need at least 128*128 = 16384 bits
+ * (so an address space of 14 bits).
+ *
+ * 640x480 will give us 80x30 characters, so the TEXT buffer needs 2400 bytes
+ * (so an address space of 12 bits).
+ *
+ * NB: since there are two memories involved, there are two clock cycles
+ *     of delay before the right pixel values come out.
+ *
+ *
+ * ZOOM x 2
+ * --------
+ *
+ * On applique un zoom par 2 pour grossir le texte
+ *
+ */
+module framebuffer(
+	input wire clk,
+	input wire wrclk,//clock pour l'écriture sur la RAM
+	
+	input wire [10:0] x,
+	input wire [10:0] y,
+	
+	output wire [2:0] o_pixel,
+	
+	input wire [12:0] ram_waddr,//adresse de la RAM à écrire (correspond au numéro de la case)
+	input wire [7:0] ram_wdata,
+	input wire ram_wren // écriture activée ou non
+	
+);
+
+//parameter num_columns = 128;//1024 / 8
+////parameter num_columns = 80;//640 / 8
+parameter num_columns = 40;//(640 / 2) / 8 
+
+
+wire [7:0] column; //80 columns
+wire [5:0] row; //30 rows
+wire [7:0] text_value; // code ascii du caractère à afficher
+//reg [7:0] text_value; // code ascii du caractère à afficher
+reg [7:0] text_code; // code ascii du caractère à afficher
+
+// coordonnées du caractère à dessiner
+reg [2:0] glyph_x;
+reg [3:0] glyph_y;
+wire [13:0] glyph_address;
+
+// ** Gestion pour la RAM **
+//reg ram_wren;
+//reg [7:0] ram_data;
+//reg [12:0] ram_waddr;//numéro de case du caractère sur l'écran
+//reg [4:0] init_step;
+wire [12:0] text_address;//numéro de case du caractère sur l'écran
+
+// (column,row) = (x / 8, y / 16)
+////assign column = x[10:3];
+////assign row = y[9:4];
+// (column,row) = (x / (8 * 2), y / (16 * 2))
+assign column = x[10:4];
+assign row = y[9:5];
+
+/* text_address sert récupérer le texte dans une RAM (futur projet) */
+assign text_address = column + (row * num_columns);
+
+player_ram2 ram2(
+	.data(ram_wdata),
+	.rdaddress(text_address),
+	.rdclock(clk),
+	//.wraddress((ram_waddr - 1)),
+	.wraddress(ram_waddr ),
+	.wrclock(wrclk),
+	.wren(ram_wren),
+	.q(text_value)
+);
+
+
+/* On récupère les coordonnées du glyph à chaque clock pour être synchro avec la RAM */
+always @(posedge clk) begin
+//always @(x,y) begin
+	////glyph_x <= x[2:0];
+	////glyph_y <= y[3:0];
+	glyph_x <= x[3:0] >> 1;
+	glyph_y <= y[4:0] >> 1;
+	
+end
+
+
+/* text_value * (8 * 16) + glyph_x + glyph_y * 8 */
+assign glyph_address = (text_value << 7) + glyph_x + (glyph_y << 3);
+
+glyph_rom glyph(
+	.address(glyph_address),
+	.clock(clk),
+	.q(o_pixel)
+);
+
+
+/* on affiche un texte blanc en sortie */
+assign o_pixel[1] = o_pixel[0];
+assign o_pixel[2] = o_pixel[0];
+ 
+endmodule

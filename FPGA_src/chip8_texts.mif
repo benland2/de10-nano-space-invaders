@@ -1,0 +1,73 @@
+-- Copyright (C) 2025  Altera Corporation. All rights reserved.
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and any partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, the Altera Quartus Prime License Agreement,
+-- the Altera IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Altera and sold by Altera or its authorized distributors.  Please
+-- refer to the Altera Software License Subscription Agreements 
+-- on the Quartus Prime software download page.
+
+-- Quartus Prime generated Memory Initialization File (.mif)
+
+-- Text0 : Connect the disc drive
+-- Text1 : Please insert disc
+
+WIDTH=8;
+DEPTH=120;
+
+ADDRESS_RADIX=UNS;
+DATA_RADIX=UNS;
+
+CONTENT BEGIN
+	0  : 67;
+    1  : 111;
+    2  : 110;
+    3  : 110;
+    4  : 101;
+    5  : 99;
+    6  : 116;
+    7  : 32;
+    8  : 116;
+    9  : 104;
+    10 : 101;
+    11 : 32;
+    12 : 100;
+    13 : 105;
+    14 : 115;
+    15 : 99;
+    16 : 32;
+    17 : 100;
+    18 : 114;
+    19 : 105;
+    20 : 118;
+    21 : 101;
+    [22..39] : 32;
+
+    40  : 80;   -- P
+    41  : 108;  -- l
+    42  : 101;  -- e
+    43  : 97;   -- a
+    44  : 115;  -- s
+    45  : 101;  -- e
+    46  : 32;   -- espace
+    47  : 105;  -- i
+    48  : 110;  -- n
+    49  : 115;  -- s
+    50 : 101;  -- e
+    51 : 114;  -- r
+    52 : 116;  -- t
+    53 : 32;   -- espace
+    54 : 100;  -- d
+    55 : 105;  -- i
+    56 : 115;  -- s
+    57 : 99;   -- c
+    [58..79] : 32;
+
+    [80..119] : 32;
+END;

@@ -1,0 +1,1 @@
+create_clock -name clock50_1 -period 20.0 [get_ports PIN_V11]

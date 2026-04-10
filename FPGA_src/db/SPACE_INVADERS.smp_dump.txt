@@ -1,0 +1,53 @@
+
+State Machine - |SPACE_INVADERS|cpu:cpu0|cpu_state
+Name cpu_state.0101 cpu_state.0100 cpu_state.0011 cpu_state.0010 cpu_state.0001 cpu_state.0000 
+cpu_state.0000 0 0 0 0 0 0 
+cpu_state.0001 0 0 0 0 1 1 
+cpu_state.0010 0 0 0 1 0 1 
+cpu_state.0011 0 0 1 0 0 1 
+cpu_state.0100 0 1 0 0 0 1 
+cpu_state.0101 1 0 0 0 0 1 
+
+State Machine - |SPACE_INVADERS|cpu:cpu0|func_state
+Name func_state.110 func_state.101 func_state.100 func_state.011 func_state.010 func_state.001 func_state.000 
+func_state.000 0 0 0 0 0 0 0 
+func_state.001 0 0 0 0 0 1 1 
+func_state.010 0 0 0 0 1 0 1 
+func_state.011 0 0 0 1 0 0 1 
+func_state.100 0 0 1 0 0 0 1 
+func_state.101 0 1 0 0 0 0 1 
+func_state.110 1 0 0 0 0 0 1 
+
+State Machine - |SPACE_INVADERS|system_state
+Name system_state.0011 system_state.0010 system_state.0001 system_state.0000 
+system_state.0000 0 0 0 0 
+system_state.0001 0 0 1 1 
+system_state.0010 0 1 0 1 
+system_state.0011 1 0 0 1 
+
+State Machine - |SPACE_INVADERS|AUDIO_header_flag
+Name AUDIO_header_flag.0000000000000011 AUDIO_header_flag.0000000000000010 AUDIO_header_flag.0000000000000001 AUDIO_header_flag.0000000000000000 
+AUDIO_header_flag.0000000000000000 0 0 0 0 
+AUDIO_header_flag.0000000000000001 0 0 1 1 
+AUDIO_header_flag.0000000000000010 0 1 0 1 
+AUDIO_header_flag.0000000000000011 1 0 0 1 
+
+State Machine - |SPACE_INVADERS|AUDIO2_header_flag
+Name AUDIO2_header_flag.0000000000000011 AUDIO2_header_flag.0000000000000010 AUDIO2_header_flag.0000000000000001 AUDIO2_header_flag.0000000000000000 
+AUDIO2_header_flag.0000000000000000 0 0 0 0 
+AUDIO2_header_flag.0000000000000001 0 0 1 1 
+AUDIO2_header_flag.0000000000000010 0 1 0 1 
+AUDIO2_header_flag.0000000000000011 1 0 0 1 
+
+State Machine - |SPACE_INVADERS|soc_system:u0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:mm_bridge_0_s0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|state
+Name state.ST_IDLE state.ST_UNCOMP_WR_SUBBURST state.ST_UNCOMP_TRANS state.ST_COMP_TRANS 
+state.ST_IDLE 0 0 0 0 
+state.ST_COMP_TRANS 1 0 0 1 
+state.ST_UNCOMP_TRANS 1 0 1 0 
+state.ST_UNCOMP_WR_SUBBURST 1 1 0 0 
+
+State Machine - |SPACE_INVADERS|I2C_HDMI_Config:I2C_HDMI_Config|mSetup_ST
+Name mSetup_ST.0000 mSetup_ST.0010 mSetup_ST.0001 
+mSetup_ST.0000 0 0 0 
+mSetup_ST.0001 1 0 1 
+mSetup_ST.0010 1 1 0 

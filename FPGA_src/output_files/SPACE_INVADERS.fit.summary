@@ -1,0 +1,20 @@
+Fitter Status : Successful - Thu Apr  9 21:59:50 2026
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : SPACE_INVADERS
+Top-level Entity Name : SPACE_INVADERS
+Family : Cyclone V
+Device : 5CSEBA6U23I7
+Timing Models : Final
+Logic utilization (in ALMs) : 3,356 / 41,910 ( 8 % )
+Total registers : 2439
+Total pins : 118 / 314 ( 38 % )
+Total virtual pins : 0
+Total block memory bits : 402,320 / 5,662,720 ( 7 % )
+Total RAM Blocks : 57 / 553 ( 10 % )
+Total DSP Blocks : 3 / 112 ( 3 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 2 / 6 ( 33 % )
+Total DLLs : 1 / 4 ( 25 % )
